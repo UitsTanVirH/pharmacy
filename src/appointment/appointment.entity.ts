@@ -2,36 +2,36 @@ import { ApiProperty } from "@nestjs/swagger";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export class Doctor{
+export class Appointment{
     @PrimaryGeneratedColumn()
     id: number;
 
     @ApiProperty()
-    @Column('varchar', { length: 255 })
-    dr_name: string;
+    @Column('int')
+    dr_id: number;
 
     @ApiProperty()
-    @Column('varchar', { length: 80 })
-    dr_email: string;
+    @Column('date')
+    appointment_date: number;
+
+    @ApiProperty()
+    @Column('time')
+    appointment_time: number;
+
+    @ApiProperty()
+    @Column('varchar', { length: 255 })
+    patient_name: string;
 
     @ApiProperty()
     @Column('varchar', { length: 25 })
-    dr_phone: string;
+    user_phoneNo: string;
 
     @ApiProperty()
-    @Column('varchar', { length: 255 })
-    dr_designation: string;
-
-    @ApiProperty()
-    @Column('text')
-    dr_overview: string;
-
-    @ApiProperty()
-    @Column('varchar', { length: 255 })
-    dr_photo: string;
+    @Column('varchar', { length: 25 })
+    created_by: string;
 
     @ApiProperty()
     @Column('tinyint')
-    dr_status: number;
-   
+    appointment_status: number;
+    
 }

@@ -8,30 +8,30 @@ export class Admin{
 
     @ApiProperty()
     @Column('varchar', { length: 255 })
-    name: string
+    admin_name: string
 
     @ApiProperty()
     @Column('varchar', { length: 80 })
-    email: string
+    admin_email: string
 
     @ApiProperty()
     @Column('varchar', { length: 25 })
-    phoneNo: string
+    admin_phoneNo: string
 
     @ApiProperty()
     @Column('varchar', { length: 25 })
-    password: string
+    admin_password: string
 
     @ApiProperty()
     @Column('text')
-    address: string
+    admin_address: string
 
     @ApiProperty()
     @Column('varchar', { length: 255 })
-    photo: string
+    admin_photo: string
 
     @ApiProperty()
     @Column('tinyint')
-    status: number
+    admin_status: number
     
 }
