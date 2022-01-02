@@ -2,6 +2,7 @@ import { BadRequestException, Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 import { Appointment } from "./appointment.entity";
+import { Patient } from "src/patients/patient.entity";
 
 @Injectable()
 export class AppointmentService{
@@ -18,4 +19,11 @@ export class AppointmentService{
             throw new BadRequestException("Invalid request");
         }
     }
+
+    public fetch(patientId: patient): Promise<any> {
+        return this.keyRepository.createQueryBuilder('key')
+          .innerJoinAndMapOne('key.user', User, 'user', 'key.id = user.keyId')
+          .where('user.userId = :userId', { userId: 1 }) // or you can change condition to 'key.userId = :userId' because of you have `userId` in Key
+          .getMany(); 
+      }
 }
