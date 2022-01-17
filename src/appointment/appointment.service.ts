@@ -20,10 +20,5 @@ export class AppointmentService{
         }
     }
 
-    public fetch(patientId: patient): Promise<any> {
-        return this.keyRepository.createQueryBuilder('key')
-          .innerJoinAndMapOne('key.user', User, 'user', 'key.id = user.keyId')
-          .where('user.userId = :userId', { userId: 1 }) // or you can change condition to 'key.userId = :userId' because of you have `userId` in Key
-          .getMany(); 
-      }
+
 }
