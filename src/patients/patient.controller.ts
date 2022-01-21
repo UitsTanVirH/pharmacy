@@ -3,8 +3,8 @@ import { Patient } from "./patient.entity";
 import { PatientService } from "./patient.service";
 
 @Controller('patient')
-export class PatientController{
-    constructor(private readonly patientService: PatientService){}
+export class PatientController {
+    constructor(private readonly patientService: PatientService) { }
 
     @Post()
     create(@Body() patient: Patient): Promise<any> {
@@ -16,5 +16,5 @@ export class PatientController{
         return this.patientService.findAll();
     }
 
-    
+
 }

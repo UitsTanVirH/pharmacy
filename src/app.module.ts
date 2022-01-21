@@ -12,11 +12,11 @@ import { ScheduleModule } from './schedule/schedule.module';
     type: 'mysql',
     host: 'localhost',
     port: 3306,
-    username: 'tanvir',
-    password: '08272829',
+    username: 'root',
+    password: '',
     database: 'pharmacy',
     entities: ['dist/**/*.entity{.ts,.js}'],
     synchronize: true,
   }), AdminModule, DoctorModule, ScheduleModule, AppointmentModule, PatientModule, CustomerModule],
 })
-export class AppModule {}
+export class AppModule { }

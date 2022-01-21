@@ -3,12 +3,12 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Patient } from "src/patients/patient.entity";
 
 @Entity()
-export class Appointment{
+export class Appointment {
     @PrimaryGeneratedColumn()
     appointment_id: number;
 
     @ApiProperty()
-    @Column('uniqueidentifier')
+    @Column('varchar', { length: 32 })
     prescription_number: number;
 
     @ApiProperty()
@@ -41,5 +41,5 @@ export class Appointment{
 
     @OneToMany(() => Patient, patient => patient.appointment)
     patient: Patient[];
-    
+
 }
