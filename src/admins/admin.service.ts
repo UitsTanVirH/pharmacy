@@ -2,6 +2,7 @@ import { BadRequestException, Injectable } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
+import { LoginDto } from "./admin.dto";
 import { Admin } from "./admin.entity";
 
 @Injectable()
@@ -51,4 +52,15 @@ export class AdminService {
 
         });
     }
+
+    async update(id: number, data: Partial<LoginDto>) {
+        await this.adminRepository.update({ id }, data);
+        return await this.adminRepository.findOne({ id });
+    }
+
+    async destroy(id: number) {
+        await this.adminRepository.delete({ id });
+        return { deleted: true };
+    }
+
 }
