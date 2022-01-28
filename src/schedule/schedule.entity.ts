@@ -11,7 +11,30 @@ export class Schedule{
     dr_id: number;
 
     @ApiProperty()
-    @Column('timestamp')
-    dr_scedule: string;
+    @Column('date', { nullable: true })
+    sat: Date;
 
+    @ApiProperty()
+    @Column('date', { nullable: true } )
+    sun: Date;
+
+    @ApiProperty()
+    @Column('date', { nullable: true })
+    mon: Date;
+
+    @ApiProperty()
+    @Column('date', { nullable: true })
+    tue: Date;
+
+    @ApiProperty()
+    @Column('date', { nullable: true })
+    wed: Date;
+
+    @ApiProperty()
+    @Column('date', { nullable: true })
+    thu: Date;
+
+    @ApiProperty()
+    @Column('date', { nullable: true })
+    fri: Date;
 }
