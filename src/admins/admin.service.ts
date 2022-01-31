@@ -31,7 +31,7 @@ export class AdminService {
             return admin;
         }
         return null;
-    }
+    } 
 
     async login(phone: string, pass: string) {
         return this.validateAdmin(phone, pass).then((userData) => {
@@ -53,7 +53,7 @@ export class AdminService {
         });
     }
 
-    async update(id: number, data: Partial<LoginDto>) {
+    async update(id: number, data: Partial<Admin>) {
         await this.adminRepository.update({ id }, data);
         return await this.adminRepository.findOne({ id });
     }

@@ -18,4 +18,16 @@ export class DoctorService{
             throw new BadRequestException("Invalid request");
         }
     }
+
+    async update(id: number, data: Partial<Doctor>) {
+        await this.doctorRepository.update({ id }, data);
+        return await this.doctorRepository.findOne({ id });
+    }
+
+    async destroy(id: number) {
+        await this.doctorRepository.delete({ id });
+        return { deleted: true };
+    }
+
+
 }

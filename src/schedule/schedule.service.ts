@@ -18,4 +18,14 @@ export class ScheduleService{
             throw new BadRequestException("Invalid request");
         }
     }
+
+    async update(dr_id: number, data: Partial<Schedule>) {
+        await this.scheduleRepository.update({ dr_id }, data);
+        return await this.scheduleRepository.findOne({ dr_id });
+    }
+
+    async destroy(dr_id: number) {
+        await this.scheduleRepository.delete({ dr_id });
+        return { deleted: true };
+    }
 }
