@@ -20,8 +20,11 @@ export class AppointmentDto {
     appointment_status: number;
 
     @ApiProperty()
-    customer_id: number;
+    customer_phone: string;
 
     @ApiProperty()
-    patient_id: number;
+    patient_name: string;
+
+    @ApiProperty()
+    patient_photo: string;
 }

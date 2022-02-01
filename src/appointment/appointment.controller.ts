@@ -4,36 +4,36 @@ import { Appointment } from "./appointment.entity";
 import { AppointmentService } from "./appointment.service";
 
 @Controller('appointment')
-export class AppointmentController{
-    constructor(private readonly appoinmentService: AppointmentService){}
+export class AppointmentController {
+  constructor(private readonly appoinmentService: AppointmentService) { }
 
-    @Post()
-    create(@Body() appoinment: Appointment): Promise<any> {
-        return this.appoinmentService.create(appoinment);
-    }
+  @Post()
+  create(@Body() appoinmentDto: AppointmentDto): Promise<any> {
+    return this.appoinmentService.create(appoinmentDto);
+  }
 
-    @Get()
-    index(): Promise<Appointment[]> {
-        return this.appoinmentService.findAll();
-    }
+  @Get()
+  index(): Promise<Appointment[]> {
+    return this.appoinmentService.findAll();
+  }
 
-    @Patch(':prescription_number')
-      async uppdateAppointment(@Param('prescription_number') prescription_number: number, @Body() data: Partial<AppointmentDto>) {
-        await this.appoinmentService.update(prescription_number, data);
-        return {
-          statusCode: HttpStatus.OK,
-          message: 'Appointment updated successfully',
-        };
-    }
+  @Patch(':prescription_number')
+  async uppdateAppointment(@Param('prescription_number') prescription_number: number, @Body() data: Partial<AppointmentDto>) {
+    await this.appoinmentService.update(prescription_number, data);
+    return {
+      statusCode: HttpStatus.OK,
+      message: 'Appointment updated successfully',
+    };
+  }
 
-    @Delete(':prescription_number')
-      async deleteAppointment(@Param('prescription_number') prescription_number: number) {
-        await this.appoinmentService.destroy(prescription_number);
-        return {
-          statusCode: HttpStatus.OK,
-          message: 'Appointment deleted successfully',
-        };
-    }
+  @Delete(':prescription_number')
+  async deleteAppointment(@Param('prescription_number') prescription_number: number) {
+    await this.appoinmentService.destroy(prescription_number);
+    return {
+      statusCode: HttpStatus.OK,
+      message: 'Appointment deleted successfully',
+    };
+  }
 
 
 
