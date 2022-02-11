@@ -1,10 +1,10 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { Column, Entity, PrimaryGeneratedColumn, Timestamp } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Schedule {
     @PrimaryGeneratedColumn()
-    id: number;
+    schedule_id: number;
 
     @ApiProperty()
     @Column('int')

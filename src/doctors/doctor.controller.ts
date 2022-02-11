@@ -8,8 +8,8 @@ export class DoctorController{
     constructor(private readonly doctorService: DoctorService){}
 
     @Post()
-    create(@Body() doctor: Doctor): Promise<any> {
-        return this.doctorService.create(doctor);
+    create(@Body() doctorDto: DoctorDto): Promise<any> {
+        return this.doctorService.create(doctorDto);
     }
 
     @Get()
@@ -17,18 +17,18 @@ export class DoctorController{
         return this.doctorService.findAll();
     }
 
-    @Patch(':id')
-      async uppdateDoctor(@Param('id') id: number, @Body() data: Partial<DoctorDto>) {
-        await this.doctorService.update(id, data);
+    @Patch(':dr_id')
+      async uppdateDoctor(@Param('dr_id') dr_id: number, @Body() data: Partial<DoctorDto>) {
+        await this.doctorService.update(dr_id, data);
         return {
           statusCode: HttpStatus.OK,
           message: 'Doctor updated successfully',
         };
     }
 
-    @Delete(':id')
-    async deleteDoctor(@Param('id') id: number) {
-        await this.doctorService.destroy(id);
+    @Delete(':dr_id')
+    async deleteDoctor(@Param('dr_id') dr_id: number) {
+        await this.doctorService.destroy(dr_id);
         return {
             statusCode: HttpStatus.OK,
             message: 'Doctor deleted successfully',

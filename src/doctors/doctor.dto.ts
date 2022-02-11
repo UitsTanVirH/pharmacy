@@ -21,4 +21,28 @@ export class DoctorDto{
 
     @ApiProperty()
     dr_status: number;
+
+    @ApiProperty()
+    branch_name: string;
+
+    @ApiProperty()
+    sat: Date;
+
+    @ApiProperty()
+    sun: Date;
+
+    @ApiProperty()
+    mon: Date;
+
+    @ApiProperty()
+    tue: Date;
+
+    @ApiProperty()
+    wed: Date;
+
+    @ApiProperty()
+    thu: Date;
+
+    @ApiProperty()
+    fri: Date;
 }

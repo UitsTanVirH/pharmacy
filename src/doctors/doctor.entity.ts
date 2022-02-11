@@ -1,10 +1,12 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Branch } from "src/branch/branch.entity";
+import { Schedule } from "src/schedule/schedule.entity";
+import { Column, Entity, ManyToMany, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Doctor{
     @PrimaryGeneratedColumn()
-    id: number;
+    dr_id: number;
 
     @ApiProperty()
     @Column('varchar', { length: 255 })
@@ -33,5 +35,7 @@ export class Doctor{
     @ApiProperty()
     @Column('tinyint')
     dr_status: number;
-   
+
+    @ManyToMany(() => Branch, branch => branch.doctor)
+    branch: Branch[];
 }
