@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Patient } from "src/patients/patient.entity";
 
 @Entity()
@@ -39,7 +39,8 @@ export class Appointment {
     @Column('int')
     patient_id: number;
 
-    @OneToMany(() => Patient, patient => patient.appointment)
-    patient: Patient[];
+    @OneToOne(() => Patient, patient => patient.appointment)
+    @JoinColumn({ name: 'patient_id' })
+    patient: Patient;
 
 }

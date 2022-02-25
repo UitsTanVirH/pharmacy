@@ -15,7 +15,7 @@ export class AppointmentService {
     ) { }
 
     async findAll(): Promise<Appointment[]> {
-        return await this.appointmentRepository.find();
+        return await this.appointmentRepository.find({ relations: ['patient'] });
     }
 
     async create(appointmentDto: AppointmentDto): Promise<Appointment> {
@@ -25,7 +25,7 @@ export class AppointmentService {
             patient_info["patient_name"] = appointmentDto.patient_name;
             patient_info["patient_photo"] = appointmentDto.patient_photo;
             const patient = await this.patientRepository.save(patient_info);
-            
+
             if (patient) {
                 delete appointmentDto.patient_name;
                 delete appointmentDto.patient_photo;
@@ -47,7 +47,7 @@ export class AppointmentService {
                 return await this.appointmentRepository.save(appointmentDto);
             }
             // send message
-            else{
+            else {
                 throw new BadRequestException("patient not found");
             }
         } catch (e) {
@@ -64,5 +64,5 @@ export class AppointmentService {
         await this.appointmentRepository.delete({ prescription_number });
         return { deleted: true };
     }
-    
+
 }

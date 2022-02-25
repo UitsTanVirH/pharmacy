@@ -8,7 +8,7 @@ export class PatientService {
     constructor(@InjectRepository(Patient) private patientRepository: Repository<Patient>) { }
 
     async findAll(): Promise<Patient[]> {
-        return await this.patientRepository.find();
+        return await this.patientRepository.find({ relations: ['appointment'] });
     }
 
     async create(patient: Patient): Promise<Patient> {

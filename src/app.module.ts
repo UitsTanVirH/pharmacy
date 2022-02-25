@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AdminModule } from './admins/admin.module';
 import { AppointmentModule } from './appointment/appointment.module';
+import { BranchModule } from './branch/branch.module';
 import { CustomerModule } from './customer/customer.module';
 import { DoctorModule } from './doctors/doctor.module';
 import { PatientModule } from './patients/patient.module';
@@ -17,6 +18,6 @@ import { ScheduleModule } from './schedule/schedule.module';
     database: 'pharmacy',
     entities: ['dist/**/*.entity{.ts,.js}'],
     synchronize: true,
-  }), AdminModule, DoctorModule, ScheduleModule, AppointmentModule, PatientModule, CustomerModule],
+  }), AdminModule, DoctorModule, ScheduleModule, AppointmentModule, PatientModule, CustomerModule, BranchModule],
 })
 export class AppModule { }
